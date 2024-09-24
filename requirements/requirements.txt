@@ -1,0 +1,27 @@
+# Data Manipulation and Analysis
+pandas==1.5.3
+numpy==1.23.5
+
+# Data Visualization
+matplotlib==3.6.3
+seaborn==0.12.2
+
+# Machine Learning
+scikit-learn==1.2.0
+torch==2.0.0
+transformers==4.30.0  # Hugging Face Transformers for NLP tasks
+tensorflow==2.12.0  # If using TensorFlow models
+intel-openvino==2023.0.0  # Intel OpenVINO toolkit for model optimization and deployment
+
+# Jupyter Notebook
+notebook==6.5.3
+
+# Optional: For GPU support (install Intel oneAPI)
+# oneapi-client or oneAPI libraries may need to be installed separately as they require specific setup.
+# Example (not included in requirements.txt):
+# pip install oneapi-client
+
+# Additional libraries for deployment and web service (if applicable)
+flask==2.3.3
+fastapi==0.103.1
+uvicorn==0.23.0  # For serving FastAPI applications
