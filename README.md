@@ -1,176 +1,120 @@
-# Public Transportation Efficiency Project
+## Installation of Intel OneAPI Toolkit
 
-This project utilizes large datasets to improve public transportation efficiency through optimized deep learning models and advanced optimization algorithms. We leverage Intel-optimized resources like **Modin**, **PyTorch**, and **Flash** for efficient data handling and model deployment. Additionally, root optimization algorithms such as the **Butterfly Optimization Algorithm (BOA)** and the **Orion package** are used to fine-tune the model.
+To optimize our project using Intel hardware, we installed the Intel oneAPI AI Tools as follows:
 
-## Prerequisites
-
-1. **Intel oneAPI AI Tools**: Install for Intel-specific optimizations.
-2. **Conda**: Create virtual environments for isolated package management.
-3. **VSCode with WSL**: Supports GPU training for deep learning tasks.
-
-### Installation
-
-1. **Download Intel AI Tools**
-
+**Downloaded Intel AI Tools**:
+   We downloaded and installed Intel AI Tools for full hardware optimization.
    ```bash
    wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f27e9e0e-ec27-4024-a4bf-b30c48c99564/l_AITools.2024.2.0.156.sh
    sh l_AITools.2024.2.0.156.sh
    ```
 
-   Accept the license terms and install the Intel AI Tools.
-
-2. **Create Conda Environments**
-
-   Set up specific environments for different stages:
-   
+**Set Up Conda Environments**:
+   We created isolated environments for different phases of the project:
    ```bash
    conda create -n modin intelpython3_core
    conda activate modin
    ```
-   
+
    ```bash
    conda create -n pytorch-gpu intelpython3_core
    conda activate pytorch-gpu
    ```
 
-3. **Install the required packages**
-
-   Use the `requirements.txt` file to install dependencies for the project:
-
+**Installed Dependencies**:
+   Using a `requirements.txt` file, we ensured that all necessary dependencies were installed:
    ```bash
    pip install -r requirements.txt
    ```
+## Data Preprocessing with Modin
 
-### requirements.txt
+We used **Modin**, optimized by Intel, for data preprocessing. This enabled us to parallelize and speed up data operations, which was essential given the large size of the transportation datasets we worked with.
 
-Here’s the list of dependencies required for this project:
-
-```
-modin[ray]
-torch
-torchvision
-intel-oneapi-modin
-intel-oneapi-pytorch
-flash
-scikit-learn
-xgboost
-butterfly-optimization-algorithm
-orion
-```
-
-Make sure to install **Orion** and **Butterfly Optimization Algorithm (BOA)** for model optimization tasks.
-
-### 1. Data Preprocessing with Modin
-
-Modin (optimized by Intel) allows parallel processing of large datasets. This helps in speeding up preprocessing for massive data.
-
-**Steps:**
-
-1. **Activate the Modin Environment:**
-
+**Activated the Modin Environment**:
    ```bash
    conda activate modin
    ```
 
-2. **Run Preprocessing:**
-
-   Execute the preprocessing script:
-
+**Ran Preprocessing Script**:
+   We executed the preprocessing script, which cleaned and organized the data for modeling:
    ```bash
    python preprocess_data.py
    ```
 
-   **Modin for Data Processing:**
-   Modin automatically parallelizes `pandas` operations, utilizing Intel-optimized hardware to efficiently process large datasets.
+   Using Modin, we parallelized common `pandas` operations to handle the dataset efficiently, leveraging Intel’s optimization.
 
-### 2. Model Training with PyTorch
+---
 
-We leverage **PyTorch**, which uses GPU acceleration for deep learning model training.
+## Feature Extraction
 
-**Steps:**
+We performed feature extraction by selecting key attributes and generating new features relevant to public transportation. These features were instrumental in improving the accuracy of our models.
 
-1. **Activate PyTorch-GPU Environment:**
+---
 
+## Exploratory Data Analysis (EDA)
+
+Using **Modin** and visualization tools like **Seaborn**, we conducted extensive exploratory data analysis. This helped us identify patterns, correlations, and trends within the data, allowing us to refine our model inputs and hypotheses.
+
+---
+
+## Model Training with PyTorch
+
+For model training, we utilized **PyTorch**, with Intel GPU support, to accelerate the process. By distributing computation tasks across GPUs, we significantly reduced training time.
+
+**Activated PyTorch-GPU Environment**:
    ```bash
    conda activate pytorch-gpu
    ```
 
-2. **Run the Training Script:**
-
+**Trained the Model**:
+   We ran our training script, which loaded the preprocessed data and trained the deep learning model:
    ```bash
    python train_model.py
    ```
 
-   The model training script performs:
-   - Loading the preprocessed data
-   - Training the deep learning model
-   - Utilizing Intel GPU optimizations to reduce training time
+   This phase involves testing various architectures and optimizing performance using Intel’s PyTorch extensions for better resource utilization.
 
-### 3. Model Optimization with BOA and Orion
+---
 
-We use root optimization algorithms like **Butterfly Optimization Algorithm (BOA)** and **Orion** to improve the performance of our model.
+## Model Optimization with BOA and Orion
 
-**Using BOA**:
+To optimize the model, we employed the **Butterfly Optimization Algorithm (BOA)** and **Orion**. These tools helped us fine-tune hyperparameters and improve the overall model performance.
 
-In your training script, implement BOA as follows:
+- **BOA** allowed us to perform global optimization across various hyperparameters.
+- **Orion** facilitated automated hyperparameter tuning for enhanced model accuracy and efficiency.
 
-```python
-from butterfly_optimization_algorithm import BOA
+By leveraging these optimization techniques, we were able to increase model efficiency and performance, ensuring better predictions for transportation schedules and routes.
 
-# Define the optimization problem
-def objective_function(params):
-    # Example: Optimizing model's hyperparameters
-    return model.evaluate(params)
+---
 
-# Initialize BOA
-optimizer = BOA(objective_function, num_iterations=100, population_size=50)
-best_params = optimizer.optimize()
-```
+## Deployment with Flask
 
-**Using Orion**:
+Once our model was trained and optimized, we deployed it using **Flask**.
 
-Orion can be used to manage experiments for tuning hyperparameters:
-
-```bash
-pip install orion
-orion hunt --config orion_config.yaml python train_model.py
-```
-
-Orion will automate hyperparameter optimization for the model.
-
-### 4. Model Analysis with PyTorch
-
-Once the model is trained, evaluate its performance using PyTorch’s built-in tools:
-
-```python
-model.eval()
-test_loss, accuracy = model.evaluate(test_data, test_labels)
-```
-
-### 5. Deployment with Flash
-
-Once the model is optimized and trained, use **Flash** for deployment:
-
-1. **Activate the PyTorch-GPU Environment:**
-
+1. **Activated the PyTorch-GPU Environment**:
    ```bash
    conda activate pytorch-gpu
    ```
 
-2. **Deploy Using Flash:**
+2. **Deployed the Model with Flask**:
+   Flask allowed us to deploy the model as a web service, enabling real-time predictions for public transportation schedules:
+   Flask, combined with Intel optimizations, ensured that the deployment was smooth and efficient, allowing us to serve predictions at scale.
 
-   Flash allows easy deployment of models:
+---
 
-   ```python
-   from flash import serve
+## Prototype Details
 
-   serve(model, host="0.0.0.0", port=8000)
-   ```
+Our AI-based system integrated large-scale transportation data with deep learning models to predict optimized schedules and routes. The system dynamically adjusts to demand patterns, reducing fuel consumption and emissions, while maintaining user convenience.
 
-**Intel Flash Optimizations:**
-Flash works efficiently with Intel hardware, optimizing GPU performance during deployment.
+---
 
-## Conclusion
+## Utility Summary
 
-In this project, we combined Intel’s hardware optimizations with advanced tools like **Modin** for data pre-processing, **PyTorch** for model training, and **Flash** for deployment. Root optimization algorithms like the **Butterfly Optimization Algorithm (BOA)** and **Orion** further enhance model performance by tuning key parameters.
-```
+Through this project, we achieved:
+
+- Optimized transportation routes and schedules
+- Reduced fuel consumption and minimized carbon emissions
+- Real-time predictions using an AI model deployed via Flask
+- Efficient use of Intel-optimized tools to accelerate model training and deployment
+
+The project demonstrates how AI can be applied to public transportation to enhance environmental sustainability and operational efficiency.
