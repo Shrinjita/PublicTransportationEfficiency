@@ -8,3 +8,5 @@ scikit-learn
 xgboost
 butterfly-optimization-algorithm
 orion
+streamlit
+plotly
