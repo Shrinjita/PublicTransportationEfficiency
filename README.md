@@ -66,8 +66,9 @@ Follow the steps below in the specified order to run the project:
     This script generates various visualizations using Plotly based on the dataset. The visualizations will be displayed in the Streamlit application when running `app.py`.
 
 ## Prototype Details
+Our AI-driven system leverages large-scale transportation datasets integrated with advanced deep learning models to forecast and optimize transit schedules and routes. By employing real-time demand forecasting, the system dynamically adapts to fluctuating user needs, effectively minimizing fuel consumption and carbon emissions while enhancing user convenience.
 
-Our AI-based system integrated large-scale transportation data with deep learning models to predict optimized schedules and routes. The system dynamically adjusts to demand patterns, reducing fuel consumption and emissions, while maintaining user convenience.
+For seamless integration, we will utilize API pulls alongside Streamlit to create an intuitive and interactive user interface, enabling real-time insights and efficient data interaction.
 
 ---
 
