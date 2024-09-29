@@ -49,6 +49,22 @@ We used **Modin**, optimized by Intel, for data preprocessing. This enabled us t
 
 We performed feature extraction by selecting key attributes and generating new features relevant to public transportation. These features were instrumental in improving the accuracy of our models.
 
+# Public Transportation Optimization
+
+## Overview
+
+This project aims to optimize public transportation by improving fuel consumption and reducing CO₂ emissions using machine learning. By leveraging vehicle data, we generated features that contribute to the accuracy of the predictive models used for demand forecasting and emissions analysis.
+
+## Feature Extraction
+
+We performed feature extraction by selecting key attributes from vehicle data and generating new features relevant to public transportation. These features were instrumental in improving the accuracy of our models.
+
+To perform feature extraction and generate new features, simply run the following command:
+
+```bash
+python feature_extraction.py
+
+
 ---
 
 ## Exploratory Data Analysis (EDA)
