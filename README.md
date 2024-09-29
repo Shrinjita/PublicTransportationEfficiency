@@ -31,45 +31,39 @@ To optimize our project using Intel hardware, we installed the Intel oneAPI AI T
 Follow the steps below in the specified order to run the project:
 
 1. **Preprocess the Data**
-   - **File:** `preprocess_data.py`
-   - **Description:** This script cleans and preprocesses the dataset. Ensure your data files are correctly placed and adjust file paths as needed.
-   - **Command:** 
+   This script cleans and preprocesses the dataset. Ensure your data files are correctly placed and adjust file paths as needed.
+    **Command:** 
      ```bash
      python preprocess_data.py
      ```
 
 2. **Feature Extraction**
-   - **File:** `feature_extraction.py`
-   - **Description:** This script extracts relevant features from the cleaned data for model training.
-   - **Command:** 
+   This script extracts relevant features from the cleaned data for model training.
+    **Command:** 
      ```bash
      python feature_extraction.py
      ```
 
 3. **Train the Model**
-   - **File:** `orion_butterfly.py`
-   - **Description:** This script trains the AI model using the preprocessed features and saves the trained model for future predictions.
-   - **Command:** 
+   This script trains the AI model using the preprocessed features and saves the trained model for future predictions.
+   **Command:** 
      ```bash
      python orion_butterfly.py
      ```
 
 4. **Make Predictions**
-   - **File:** `train_model.py`
-   - **Description:** This script loads the trained model and contains the function to make predictions based on new input data.
-   - **Command:** This file is indirectly run via the Streamlit application in the next step.
+   This script loads the trained model and contains the function to make predictions based on new input data.
+    **Command:** This file is indirectly run via the Streamlit application in the next step.
 
 5. **Run the Streamlit Application**
-   - **File:** `app.py`
-   - **Description:** This is the main application where users can input data for predictions and visualize results through interactive graphs.
-   - **Command:** 
+    This is the main application where users can input data for predictions and visualize results through interactive graphs.
+    **Command:** 
      ```bash
      streamlit run app.py
      ```
 
 6. **Exploratory Data Analysis**
-   - **File:** `eda.py`
-   - **Description:** This script generates various visualizations using Plotly based on the dataset. The visualizations will be displayed in the Streamlit application when running `app.py`.
+    This script generates various visualizations using Plotly based on the dataset. The visualizations will be displayed in the Streamlit application when running `app.py`.
 
 ## Prototype Details
 
